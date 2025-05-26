@@ -15,7 +15,20 @@ class QuizCreator:
         self.save_quiz_to_file()
         print("Your quiz has been created and saved into a .txt file. (Saved in the same folder as the quiz_creator code)")
 
+        def add_question(self):
+            question_text = input("Enter a question: \n")
 
+            choices = {}
+            for letter in ['a', 'b', 'c', 'd']:
+                answer_text = input(f"Enter choice {letter}: ")
+                choices[letter] = answer_text
+
+            while True:
+                correct_choice = input("Which choice is the correct answer?: (a/b/c/d)\n").strip().lower()
+                if correct_choice in ['a', 'b', 'c', 'd']:
+                    break
+                else:
+                    print("Please type a valid input. (a/b/c/d)")
 
             user_quiz_data.append({
                 "question": input_question,
