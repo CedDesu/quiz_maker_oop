@@ -7,33 +7,33 @@ class QuizTaker:
         self.selected_answer_vars = []
         self.radio_button_groups = []
 
-def load_questions_from_file(filename):
-    with open(filename, 'r', encoding='utf-8') as file:
-        lines = [line.strip() for line in file if line.strip()]
+    def load_questions_from_file(self):
+        with open(self.file_path, 'r', encoding='utf-8') as file:
+            lines = [line.strip() for line in file if line.strip()]
 
-    questions_data = []
-    for index in range(0, len(lines), 6):
-        if lines[index].startswith("Q") and lines[index + 5].startswith("Correct answer:"):
-            question_text = lines[index]
-            choices = lines[index + 1 : index + 5]
-            correct_answer_line = lines[index + 5]
-            questions_data.append((question_text, choices, correct_answer_line))
-    return questions_data
+        questions_data = []
+        for index in range(0, len(lines), 6):
+            if lines[index].startswith("Q") and lines[index + 5].startswith("Correct answer:"):
+                question_text = lines[index]
+                choices = lines[index + 1 : index + 5]
+                correct_answer_line = lines[index + 5]
+                questions_data.append((question_text, choices, correct_answer_line))
+        return questions_data
 
-def display_quiz_window(questions_data):
-    window = tk.Tk()
-    window.title("Interactive Quiz")
+    def display_quiz_window(self):
+        window = tk.Tk()
+        window.title("Interactive Quiz")
 
-    canvas = tk.Canvas(window)
-    scrollbar = tk.Scrollbar(window, command=canvas.yview)
-    question_container = tk.Frame(canvas)
+        canvas = tk.Canvas(window)
+        scrollbar = tk.Scrollbar(window, command=canvas.yview)
+        question_container = tk.Frame(canvas)
 
-    canvas.create_window((0, 0), window=question_container, anchor='nw')
-    canvas.configure(yscrollcommand=scrollbar.set)
+        canvas.create_window((0, 0), window=question_container, anchor='nw')
+        canvas.configure(yscrollcommand=scrollbar.set)
 
-    canvas.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
-    scrollbar.pack(side=tk.RIGHT, fill=tk.Y)
-    question_container.bind("<Configure>", lambda event: canvas.configure(scrollregion=canvas.bbox("all")))
+        canvas.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
+        scrollbar.pack(side=tk.RIGHT, fill=tk.Y)
+        question_container.bind("<Configure>", lambda event: canvas.configure(scrollregion=canvas.bbox("all")))
 
     selected_answer_vars = []
     radio_button_groups = []
