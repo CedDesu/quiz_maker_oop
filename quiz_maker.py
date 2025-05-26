@@ -5,21 +5,17 @@ class QuizCreator:
     def start(self):
         input("Welcome to Quiz_Creator v.1, please press any button to start.\n")
 
-        #Asks the user for a question and 4 choices
         while True:
-            input_question = input("Enter a question: \n")
+            self.add_question()
 
-            choices = {}
-            for choice in ['a', 'b', 'c', 'd']:
-                answer = input(f"Enter choice {choice}: ")
-                choices[choice] = answer
+            next_question = input("Do you want to input another question? (yes/no)\n").strip().lower()
+            if next_question not in ('yes', 'y'):
+                break
 
-            while True:
-                correct_answer = input("Which choice is the correct answer?: (a/b/c/d)\n").strip().lower()
-                if correct_answer in ['a', 'b', 'c', 'd']:
-                    break
-                else:
-                    print("Please type a valid input. (a/b/c/d)")
+        self.save_quiz_to_file()
+        print("Your quiz has been created and saved into a .txt file. (Saved in the same folder as the quiz_creator code)")
+
+
 
             user_quiz_data.append({
                 "question": input_question,
@@ -44,5 +40,4 @@ class QuizCreator:
 
         print("Your quiz has been created and saved into a .txt file. (Saved in the same folder as the quiz_creator code)")
 
-    if __name__ == "__main__":
-        quiz_creator()
+
