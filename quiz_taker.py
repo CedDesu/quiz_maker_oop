@@ -1,5 +1,12 @@
 import tkinter as tk
 
+class QuizTaker:
+    def __init__(self, file_path):
+        self.file_path = file_path
+        self.questions_data = self.load_questions_from_file()
+        self.selected_answer_vars = []
+        self.radio_button_groups = []
+
 def load_questions_from_file(filename):
     with open(filename, 'r', encoding='utf-8') as file:
         lines = [line.strip() for line in file if line.strip()]
