@@ -1,6 +1,6 @@
 import tkinter as tk
 
-class QuizInterface:
+class QuizTaker:
     def __init__(self, file_path):
         self.file_path = file_path
         self.questions_data = self.load_questions_from_file()

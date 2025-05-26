@@ -4,6 +4,7 @@ Code for the two separate quiz .py files that creates an instance and runs the q
 """
 
 from quiz_maker import QuizMaker
+from quiz_taker import QuizTaker
 
 def main():
     print("1. Create a quiz")
@@ -13,6 +14,9 @@ def main():
     if choice == '1':
         quiz_creator = QuizMaker()
         quiz_creator.start()
+    elif choice == '2':
+        quiz_taker = QuizTaker("quiz.txt")
+        quiz_taker.display_quiz_window()
     else:
         print("Invalid option.")
 
