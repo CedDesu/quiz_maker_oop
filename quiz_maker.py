@@ -1,3 +1,8 @@
+"""
+Quiz_Creator - First Part of a Quiz creator which asks for questions and choices.
+Second part which reads the created quizzes and makes them a functioning quiz is to be made soon.
+"""
+
 class QuizMaker:
     def __init__(self):
         self.user_quiz_data = []
